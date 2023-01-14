@@ -1,0 +1,23 @@
+plugins {
+    id "org.openapi.generator" version "6.2.1"
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+openApiGenerate {
+    generatorName = "java"
+    library = "resteasy"
+    inputSpec = "$rootDir/specs/nhl.yaml".toString()
+    outputDir = "$buildDir/generated".toString()
+    apiPackage = "nhlapi.api"
+    invokerPackage = "nhlapi.invoker"
+    modelPackage = "nhlapi.model"
+    configOptions = [
+            dateLibrary: "java8"
+    ]
+}
